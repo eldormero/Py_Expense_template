@@ -16,6 +16,7 @@ expense_questions = [
         "type":"input",
         "name":"amount",
         "message":"New Expense - Amount: ",
+        'filter': lambda val: int(val)
     },
     {
         "type":"input",
@@ -32,17 +33,18 @@ expense_questions = [
 
 ]
 
-
-
 def add_to_csv(*args):
-    with open('expense_report.csv', 'w', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerows(args)
+    with open('expense_report.csv', 'a', newline='') as csvfile:
+        expense = []
+        infos = args[0]
+        spamwriter = csv.writer(csvfile, delimiter=',',
+                                quoting=csv.QUOTE_MINIMAL)
+        for e in infos:
+            expense.append(infos[e])
+        spamwriter.writerow([expense[0], expense[1], expense[2]])
 
 def new_expense(*args):
     infos = prompt(expense_questions)
     # Writing the informations on external file might be a good idea ¯\_(ツ)_/¯
     add_to_csv(infos)
     return True
-
-

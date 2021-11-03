@@ -6,6 +6,7 @@ user_questions = [
         "type":"input",
         "name":"Name",
         "message":"New user - Name: ",
+        'filter': lambda val: str(val)
     },
 ]
 
