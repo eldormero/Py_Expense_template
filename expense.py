@@ -30,6 +30,13 @@ expense_questions = [
         # Select a user between the different existant user in the users.csv file
         "choices": get_user()
     },
+       {
+        'type': 'list',
+        "name":"involved",
+        "message":"New Expense - Involved: ",
+        # Select a user between the different existant user in the users.csv file
+        "choices": get_user()
+    },
 
 ]
 
